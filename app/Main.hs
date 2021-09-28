@@ -1,6 +1,6 @@
 module Main where
 
-import Lib
+import Data.TJ3.PERT
 
 main :: IO ()
-main = someFunc
+main = stdInToStdOut

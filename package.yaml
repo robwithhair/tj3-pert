@@ -22,12 +22,13 @@ description:         Please see the README on GitHub at <https://github.com/gith
 dependencies:
 - base >= 4.7 && < 5
 - text
+- vector
 
 library:
   source-dirs: src
 
 executables:
-  tj3-pert-exe:
+  tj3-pert:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
