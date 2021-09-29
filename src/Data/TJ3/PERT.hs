@@ -140,18 +140,18 @@ duration s | otherwise = case last s of
 seconds :: Duration -> Double
 seconds (Minutes m) = m * 60
 seconds (Hours h) = h * (seconds $ Minutes 60)
-seconds (Days d) = d * (seconds $ Hours 24)
-seconds (Weeks w) = w * (seconds $ Days 7)
-seconds (Years y) = y * (seconds $ Days 365.25)
+seconds (Days d) = d * (seconds $ Hours 7.5)
+seconds (Weeks w) = w * (seconds $ Days 5)
+seconds (Years y) = y * (seconds $ Days 253)
 seconds (Months m) = m * (seconds $ Years (1/12))
-
+--- need to correct
 fromSeconds :: Double -> Duration
 fromSeconds s | s < 3600 = Minutes (s / 60)
-fromSeconds s | s < 86400 = Hours (s / 3600)
-fromSeconds s | s < 604800 = Days (s / 86400)
-fromSeconds s | s < (86400 * 365.25 / 12) = Weeks (s / 604800)
-fromSeconds s | s < (86400 * 365.25) = Months (s / (86400 * 365.25 / 12))
-fromSeconds s | otherwise = Years (s / (86400 * 365.25))
+fromSeconds s | s < 27000 = Hours (s / 3600)
+fromSeconds s | s < 135000 = Days (s / 27000)
+fromSeconds s | s < 569250 = Weeks (s / 135000)
+fromSeconds s | s < 6831000 = Months (s / 569250)
+fromSeconds s | otherwise = Years (s / 6831000)
 
 showMaybeRound (Just n) x = show (round' n x)
 showMaybeRound Nothing x = show x
