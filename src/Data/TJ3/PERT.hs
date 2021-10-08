@@ -15,6 +15,7 @@ import Data.Maybe (isNothing)
 stdInToStdOut :: IO ()
 stdInToStdOut = LT.interact (LT.unlines . map processLine . LT.lines)
 
+isSemicolon :: Char -> Bool
 isSemicolon = (== ';')
 
 statements :: LT.Text -> [LT.Text]
